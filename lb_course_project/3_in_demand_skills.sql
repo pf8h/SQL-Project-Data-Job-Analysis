@@ -5,6 +5,7 @@ shouts to luke barousse */
 
 SELECT
     skills,
+    ARRAY_AGG(DISTINCT type) AS category,
     COUNT(job_postings_fact.job_id) AS qty_jobs,
     ARRAY_AGG(DISTINCT job_title_short) AS positions
 FROM

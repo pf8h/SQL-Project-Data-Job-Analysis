@@ -6,6 +6,7 @@ shouts to luke barousse */
 SELECT
     skills,
     AVG(salary_year_avg) AS avg_salary,
+    ARRAY_AGG(DISTINCT type) AS category,
     ARRAY_AGG(DISTINCT job_title_short) AS used_by
 FROM
     skills_dim

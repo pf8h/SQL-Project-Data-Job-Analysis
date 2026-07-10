@@ -812,3 +812,10 @@ WHERE
 ORDER BY
     month_ DESC
 ;
+
+SELECT
+    *
+FROM
+    skills_dim
+LIMIT 50
+;
