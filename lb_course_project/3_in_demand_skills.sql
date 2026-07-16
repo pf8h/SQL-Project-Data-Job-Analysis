@@ -6,14 +6,14 @@ shouts to luke barousse */
 SELECT
     skills,
     ARRAY_AGG(DISTINCT type) AS category,
-    COUNT(job_postings_fact.job_id) AS qty_jobs,
-    ARRAY_AGG(DISTINCT job_title_short) AS positions
+    COUNT(skills_job_dim.job_id) AS qty_jobs,
+    ARRAY_AGG(DISTINCT job_title_short) AS position
 FROM
     skills_dim
-LEFT JOIN
+INNER JOIN
     skills_job_dim
     ON skills_job_dim.skill_id = skills_dim.skill_id
-LEFT JOIN
+INNER JOIN
     job_postings_fact
     ON job_postings_fact.job_id = skills_job_dim.job_id
 WHERE
