@@ -1,4 +1,4 @@
-/* this shows the top skills based on salary for your role
+/* this shows the top skills based on salary for your desired position
 date is from 2023
 variables will be marked for your convenience
 shouts to luke barousse */
@@ -9,10 +9,10 @@ SELECT
     ARRAY_AGG(DISTINCT type) AS category,
     ARRAY_AGG(DISTINCT job_title_short) AS position
 FROM skills_dim
-LEFT JOIN
+INNER JOIN
     skills_job_dim
     ON skills_job_dim.skill_id = skills_dim.skill_id
-LEFT JOIN
+INNER JOIN
     job_postings_fact
     ON job_postings_fact.job_id = skills_job_dim.job_id
 WHERE
@@ -21,7 +21,7 @@ WHERE
 GROUP BY
     skills
 HAVING
-    COUNT(skills_job_dim.job_id) >= 25
+    COUNT(skills_job_dim.job_id) >= 25 -- enter minimum number of jobs skill is used in
 ORDER BY
     avg_salary DESC
 ;

@@ -1,6 +1,7 @@
 this is my output of what i've learned in Luke Barousse's "SQL for Data Analytics - Learn SQL in 4 Hours"
 link: https://youtu.be/7mz73uXD9DA?si=gc-hFHo8AQ2GAYO-
 
+the purpose of these queries is to showcase a series of job insights relevant to someone (like me) who is interested in entering the analyst field
 
 PROGRESSION LOG:  
 6/18/26 - 34:00  
@@ -13,3 +14,4 @@ PROGRESSION LOG:
 7/7/26 - 3:01:01  
 7/10/26 - 3:26:37  
 7/15/26 - 3:42:42  
+7/20/26 - 4:08:40

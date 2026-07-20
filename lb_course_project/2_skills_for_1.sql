@@ -25,15 +25,16 @@ WITH tpj AS (
 skill_order AS (
     SELECT
         skill_id,
-        COUNT(skill_id) OVER (PARTITION BY skill_id) AS skill_count,
-        job_id
+        COUNT(skill_id) AS skill_count
     FROM
         skills_job_dim
+    GROUP BY
+        skill_id
     ORDER BY
         skill_count DESC
 )
 SELECT
-    job_title,
+    ARRAY_AGG(DISTINCT job_title) AS job_title,
     ARRAY_AGG(DISTINCT salary) AS salary,
     ARRAY_AGG(DISTINCT company) AS company,
     ARRAY_AGG(skills ORDER BY skill_count DESC) AS skills,
@@ -48,10 +49,9 @@ INNER JOIN
     ON skills_dim.skill_id = skills_job_dim.skill_id
 INNER JOIN
     skill_order
-    ON skill_order.job_id = tpj.job_id
-    AND skill_order.skill_id = skills_job_dim.skill_id
+    ON skill_order.skill_id = skills_job_dim.skill_id
 GROUP BY
-    job_title
+    tpj.job_id
 ORDER BY
     salary DESC
 LIMIT
