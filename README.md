@@ -1,7 +1,7 @@
 this is my output of what i've learned in Luke Barousse's "SQL for Data Analytics - Learn SQL in 4 Hours"
 link: https://youtu.be/7mz73uXD9DA?si=gc-hFHo8AQ2GAYO-
 
-the purpose of these queries is to showcase a series of job insights relevant to someone (like me) who is interested in entering the analyst field
+the purpose of these queries is to showcase a series of job insights relevant to someone (like me) who is interested in entering the field of analytics
 
 PROGRESSION LOG:  
 6/18/26 - 34:00  
