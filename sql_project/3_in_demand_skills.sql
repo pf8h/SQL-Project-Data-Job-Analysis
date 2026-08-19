@@ -5,7 +5,7 @@ shouts to luke barousse */
 
 SELECT
     skills,
-    ARRAY_AGG(DISTINCT type) AS category,
+    MAX(type) AS category,
     COUNT(skills_job_dim.job_id) AS qty_jobs,
     ARRAY_AGG(DISTINCT job_title_short) AS position
 FROM
@@ -17,7 +17,7 @@ INNER JOIN
     job_postings_fact
     ON job_postings_fact.job_id = skills_job_dim.job_id
 WHERE
-    job_title_short LIKE '%Business%' -- enter search between percent signs (%%)
+    job_title_short LIKE '%Analyst%' -- enter search between percent signs (%%)
 GROUP BY
     skills
 ORDER BY

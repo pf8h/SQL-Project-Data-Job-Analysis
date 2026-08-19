@@ -34,9 +34,9 @@ skill_order AS (
         skill_count DESC
 )
 SELECT
-    ARRAY_AGG(DISTINCT job_title) AS job_title,
-    ARRAY_AGG(DISTINCT salary) AS salary,
-    ARRAY_AGG(DISTINCT company) AS company,
+    MAX(job_title) AS job_title,
+    MAX(salary) AS salary,
+    MAX(company) AS company,
     ARRAY_AGG(skills ORDER BY skill_count DESC) AS skills,
     ARRAY_AGG(DISTINCT position) AS position
 FROM

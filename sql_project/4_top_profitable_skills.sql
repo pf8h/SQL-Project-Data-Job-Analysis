@@ -5,8 +5,8 @@ shouts to luke barousse */
 
 SELECT
     skills,
-    ROUND(AVG(salary_year_avg),2) AS avg_salary,
-    ARRAY_AGG(DISTINCT type) AS category,
+    ROUND(AVG(salary_year_avg), 2) AS avg_salary,
+    MAX(type) AS category,
     ARRAY_AGG(DISTINCT job_title_short) AS position
 FROM skills_dim
 INNER JOIN

@@ -6,7 +6,7 @@ shouts luke barousse */
 WITH ids AS (
         SELECT
             skills,
-            ARRAY_AGG(DISTINCT type) AS category,
+            MAX(type) AS category,
             COUNT(skills_job_dim.job_id) AS qty_jobs,
             ARRAY_AGG(DISTINCT job_title_short) AS position
         FROM
@@ -24,7 +24,7 @@ tps AS (
     SELECT
         skills,
         ROUND(AVG(salary_year_avg),2) AS avg_salary,
-        ARRAY_AGG(DISTINCT type) AS category,
+        MAX(type) AS category,
         ARRAY_AGG(DISTINCT job_title_short) AS position
     FROM skills_dim
     INNER JOIN
@@ -55,11 +55,11 @@ ORDER BY -- order can be rearranged according to priority
     avg_salary DESC
 ;
 
-/* this is an alternate version, which omits cte for conciseness and includes a filter for your desired position
+/* the above version copy/pastes files 3 & 4. this is an alternate version, which omits cte for conciseness and includes a filter for your desired position
 
 SELECT
     skills,
-    ARRAY_AGG(DISTINCT type) AS category,
+    MAX(type) AS category,
     COUNT(job_postings_fact.job_id) AS demand,
     ROUND(AVG(salary_year_avg),2) AS avg_salary,
     ARRAY_AGG(DISTINCT job_title_short) AS position
